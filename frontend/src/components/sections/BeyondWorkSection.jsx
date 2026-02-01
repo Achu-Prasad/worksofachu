@@ -2,11 +2,19 @@ import React from 'react';
 import { Camera, BookOpen, Compass, ChefHat } from 'lucide-react';
 import { beyondWork } from '../../data/mock';
 
-const iconMap = {
-  Photography: Camera,
-  Reading: BookOpen,
-  Travel: Compass,
-  Cooking: ChefHat
+const getIcon = (name) => {
+  switch (name) {
+    case 'Photography':
+      return Camera;
+    case 'Reading':
+      return BookOpen;
+    case 'Travel':
+      return Compass;
+    case 'Cooking':
+      return ChefHat;
+    default:
+      return Camera;
+  }
 };
 
 const BeyondWorkSection = () => {
@@ -27,7 +35,7 @@ const BeyondWorkSection = () => {
         {/* Interests Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {beyondWork.interests.map((interest, index) => {
-            const Icon = iconMap[interest.name] || Camera;
+            const Icon = getIcon(interest.name);
             return (
               <div
                 key={index}
