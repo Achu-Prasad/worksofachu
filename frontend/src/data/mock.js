@@ -10,9 +10,9 @@ export const personalInfo = {
 };
 
 export const aboutData = {
-  intro: "I'm Achu, a product designer with 6+ years of experience crafting digital experiences that balance business goals with user needs. My journey began in graphic design, but I found my true calling in the intersection of strategy, empathy, and visual craft.",
+  intro: "I'm Achu, a product designer passionate about crafting digital experiences that balance business goals with user needs. My journey began in graphic design, but I found my true calling in the intersection of strategy, empathy, and visual craft.",
   philosophy: "I believe great design is invisible — it removes friction, creates clarity, and respects the user's time. Every pixel should earn its place.",
-  transition: "After years in agency work, I transitioned to product design to create lasting impact. I'm drawn to complex problems that require both analytical thinking and creative solutions."
+  transition: "Currently exploring product design to create lasting impact. I'm drawn to complex problems that require both analytical thinking and creative solutions."
 };
 
 export const whyIDesign = {
@@ -24,70 +24,135 @@ export const whyIDesign = {
 export const workExperience = [
   {
     id: 1,
-    role: "Senior Product Designer",
-    company: "Razorpay",
-    duration: "2022 — Present",
-    impact: "Led design for payment checkout experience, improving conversion by 23%. Mentored junior designers and established design system foundations."
+    role: "UI/UX Design Intern",
+    company: "Tech Startup",
+    duration: "2024 — Present",
+    impact: "Working on user research and interface design for mobile applications. Contributing to design system documentation and prototyping."
   },
   {
     id: 2,
-    role: "Product Designer",
-    company: "Swiggy",
-    duration: "2020 — 2022",
-    impact: "Redesigned restaurant discovery flow, increasing user engagement by 40%. Collaborated with cross-functional teams across 5 squads."
+    role: "Freelance Designer",
+    company: "Self-employed",
+    duration: "2023 — Present",
+    impact: "Designing brand identities and digital products for local businesses. Building expertise in user research and prototyping."
   },
   {
     id: 3,
-    role: "UI/UX Designer",
-    company: "Thoughtworks",
-    duration: "2018 — 2020",
-    impact: "Delivered design solutions for enterprise clients including healthcare and fintech sectors. Introduced design thinking workshops."
-  },
-  {
-    id: 4,
-    role: "Visual Designer",
-    company: "Freelance",
-    duration: "2016 — 2018",
-    impact: "Built brand identities and digital products for 20+ startups. Developed expertise in user research and prototyping."
+    role: "Design Volunteer",
+    company: "Non-profit Organization",
+    duration: "2022 — 2023",
+    impact: "Created visual designs for social campaigns and educational materials. Collaborated with teams across different departments."
   }
 ];
 
 export const projects = [
   {
     id: 1,
-    title: "Payment Checkout Reimagined",
-    client: "Razorpay",
-    role: "Lead Designer",
-    outcome: "23% improvement in checkout conversion rate",
-    description: "Complete redesign of the payment checkout experience focusing on trust signals, clarity, and speed.",
-    tags: ["Product Design", "User Research", "Design System"]
+    slug: "fintech-mobile-app",
+    title: "Fintech Mobile App",
+    subtitle: "Personal finance made simple",
+    type: "Personal Project",
+    description: "A comprehensive mobile app design for personal finance management targeting young professionals. The app helps users track expenses, set budgets, and achieve their financial goals with an intuitive and clean interface.",
+    role: "UI/UX Designer — Responsible for end-to-end design including user research, wireframing, visual design, and prototyping.",
+    tags: ["Mobile App", "Fintech", "UI/UX Design"],
+    liveLink: null,
+    prototypeLink: "https://figma.com/prototype/example",
+    thumbnail: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
+    heroMedia: {
+      type: "image",
+      url: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=800&fit=crop"
+    },
+    gallery: [
+      { type: "image", url: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=800&fit=crop", caption: "Dashboard Overview" },
+      { type: "image", url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop", caption: "Expense Tracking" },
+      { type: "image", url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop", caption: "Budget Planning" },
+      { type: "image", url: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200&h=800&fit=crop", caption: "Savings Goals" },
+      { type: "image", url: "https://images.unsplash.com/photo-1553729459-uj36hv58ad?w=1200&h=800&fit=crop", caption: "Transaction History" },
+      { type: "image", url: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=800&fit=crop", caption: "Analytics View" },
+      { type: "image", url: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&h=800&fit=crop", caption: "User Profile" },
+      { type: "image", url: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=1200&h=800&fit=crop", caption: "Settings & Preferences" }
+    ]
   },
   {
     id: 2,
-    title: "Restaurant Discovery",
-    client: "Swiggy",
-    role: "Product Designer",
-    outcome: "40% increase in user engagement",
-    description: "Redesigned how users discover restaurants with personalized recommendations and intuitive filters.",
-    tags: ["Mobile App", "UX Design", "A/B Testing"]
+    slug: "healthcare-dashboard",
+    title: "Healthcare Dashboard",
+    subtitle: "Streamlining patient management",
+    type: "Internship Project",
+    description: "A comprehensive dashboard design for healthcare professionals to manage patient data efficiently. The project focused on simplifying complex medical workflows and improving the overall user experience for clinic staff.",
+    role: "UI/UX Design Intern — Contributed to user research, wireframing, and UI design under senior designer mentorship.",
+    tags: ["Dashboard", "Healthcare", "Enterprise"],
+    liveLink: null,
+    prototypeLink: "https://figma.com/prototype/example",
+    thumbnail: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
+    heroMedia: {
+      type: "image",
+      url: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=800&fit=crop"
+    },
+    gallery: [
+      { type: "image", url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&h=800&fit=crop", caption: "Main Dashboard" },
+      { type: "image", url: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&h=800&fit=crop", caption: "Patient Records" },
+      { type: "image", url: "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=1200&h=800&fit=crop", caption: "Appointment Scheduler" },
+      { type: "image", url: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=1200&h=800&fit=crop", caption: "Medical History" },
+      { type: "image", url: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=1200&h=800&fit=crop", caption: "Prescription Management" },
+      { type: "image", url: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&h=800&fit=crop", caption: "Lab Results View" },
+      { type: "image", url: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1200&h=800&fit=crop", caption: "Billing Interface" },
+      { type: "image", url: "https://images.unsplash.com/photo-1576671081837-49000212a370?w=1200&h=800&fit=crop", caption: "Reports & Analytics" }
+    ]
   },
   {
     id: 3,
-    title: "Healthcare Dashboard",
-    client: "Enterprise Client",
-    role: "UI/UX Designer",
-    outcome: "Reduced task completion time by 35%",
-    description: "Designed a comprehensive dashboard for healthcare professionals to manage patient data efficiently.",
-    tags: ["Enterprise", "Dashboard", "Data Visualization"]
+    slug: "food-delivery-redesign",
+    title: "Food Delivery Redesign",
+    subtitle: "Reimagining restaurant discovery",
+    type: "Personal Project",
+    description: "A conceptual redesign of a food delivery app focusing on improving restaurant discovery and the ordering experience. The design emphasizes visual appeal of food imagery and streamlined checkout process.",
+    role: "UI/UX Designer — Complete redesign concept including research, information architecture, and visual design.",
+    tags: ["Mobile App", "Food & Beverage", "Redesign"],
+    liveLink: null,
+    prototypeLink: "https://figma.com/prototype/example",
+    thumbnail: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=600&fit=crop",
+    heroMedia: {
+      type: "image",
+      url: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&h=800&fit=crop"
+    },
+    gallery: [
+      { type: "image", url: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&h=800&fit=crop", caption: "Home Screen" },
+      { type: "image", url: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop", caption: "Restaurant Listing" },
+      { type: "image", url: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1200&h=800&fit=crop", caption: "Menu View" },
+      { type: "image", url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&h=800&fit=crop", caption: "Item Details" },
+      { type: "image", url: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=1200&h=800&fit=crop", caption: "Cart & Checkout" },
+      { type: "image", url: "https://images.unsplash.com/photo-1482049016gy-2d1ec7ab7445?w=1200&h=800&fit=crop", caption: "Order Tracking" },
+      { type: "image", url: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=1200&h=800&fit=crop", caption: "Reviews & Ratings" },
+      { type: "image", url: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1200&h=800&fit=crop", caption: "Favorites Collection" }
+    ]
   },
   {
     id: 4,
-    title: "Fintech Mobile App",
-    client: "Startup",
-    role: "Design Lead",
-    outcome: "Launched to 50K+ users in first month",
-    description: "End-to-end design for a personal finance app targeting young professionals.",
-    tags: ["Mobile App", "Fintech", "Brand Identity"]
+    slug: "travel-booking-app",
+    title: "Travel Booking App",
+    subtitle: "Discover your next adventure",
+    type: "Live Project",
+    description: "A travel booking application designed to help users discover and book unique travel experiences. The app features an immersive visual design that inspires wanderlust while maintaining functional booking flows.",
+    role: "UI Designer — Visual design and prototyping for key user flows including search, booking, and trip management.",
+    tags: ["Mobile App", "Travel", "Booking"],
+    liveLink: "https://example-travel-app.com",
+    prototypeLink: "https://figma.com/prototype/example",
+    thumbnail: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop",
+    heroMedia: {
+      type: "image",
+      url: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=800&fit=crop"
+    },
+    gallery: [
+      { type: "image", url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=800&fit=crop", caption: "Destination Discovery" },
+      { type: "image", url: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&h=800&fit=crop", caption: "Search Results" },
+      { type: "image", url: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&h=800&fit=crop", caption: "Trip Details" },
+      { type: "image", url: "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=1200&h=800&fit=crop", caption: "Booking Flow" },
+      { type: "image", url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&h=800&fit=crop", caption: "Itinerary View" },
+      { type: "image", url: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=1200&h=800&fit=crop", caption: "Accommodation Options" },
+      { type: "image", url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop", caption: "Activity Booking" },
+      { type: "image", url: "https://images.unsplash.com/photo-1528127269322-539801943592?w=1200&h=800&fit=crop", caption: "Trip Summary" }
+    ]
   }
 ];
 
