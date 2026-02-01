@@ -7,7 +7,7 @@ import { Badge } from '../components/ui/badge';
 import { projects } from '../data/mock';
 
 // Scroll-animated gallery image component
-const GalleryImage = ({ item, index }) => {
+const GalleryImage = ({ url, caption, index }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: "-100px" });
   
@@ -27,7 +27,7 @@ const GalleryImage = ({ item, index }) => {
       className="relative"
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 0.6, delay: index * 0.05 }}
     >
       <motion.div 
         className="relative overflow-hidden rounded-2xl bg-slate-100 group"
@@ -35,8 +35,8 @@ const GalleryImage = ({ item, index }) => {
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
       >
         <img
-          src={item.url}
-          alt={item.caption}
+          src={url}
+          alt={caption}
           className="w-full aspect-[16/10] object-cover"
           loading="lazy"
         />
@@ -48,7 +48,7 @@ const GalleryImage = ({ item, index }) => {
           whileHover={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <p className="text-white text-sm font-medium">{item.caption}</p>
+          <p className="text-white text-sm font-medium">{caption}</p>
         </motion.div>
 
         {/* Frame Number */}
@@ -66,10 +66,15 @@ const GalleryImage = ({ item, index }) => {
 const NextProjectCard = ({ project, direction }) => {
   const navigate = useNavigate();
   
+  const handleClick = () => {
+    navigate(`/project/${project.slug}`);
+    window.scrollTo(0, 0);
+  };
+  
   return (
     <motion.div
       className="group cursor-pointer"
-      onClick={() => navigate(`/project/${project.slug}`)}
+      onClick={handleClick}
       whileHover={{ y: -5 }}
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
     >
@@ -132,6 +137,8 @@ const ProjectDetailPage = () => {
       </div>
     );
   }
+
+  const gallery = project.gallery || [];
 
   return (
     <div className="min-h-screen bg-white">
@@ -225,11 +232,19 @@ const ProjectDetailPage = () => {
               <div>
                 <h3 className="text-sm text-slate-500 uppercase tracking-wide mb-3">Skills & Tools</h3>
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary" className="bg-slate-100 text-slate-600">
-                      {tag}
+                  <Badge variant="secondary" className="bg-slate-100 text-slate-600">
+                    {project.tags[0]}
+                  </Badge>
+                  {project.tags[1] && (
+                    <Badge variant="secondary" className="bg-slate-100 text-slate-600">
+                      {project.tags[1]}
                     </Badge>
-                  ))}
+                  )}
+                  {project.tags[2] && (
+                    <Badge variant="secondary" className="bg-slate-100 text-slate-600">
+                      {project.tags[2]}
+                    </Badge>
+                  )}
                 </div>
               </div>
 
@@ -291,11 +306,16 @@ const ProjectDetailPage = () => {
             <p className="text-slate-600">A closer look at the design process and final deliverables.</p>
           </motion.div>
 
-          {/* Gallery Grid with Scroll Animations */}
+          {/* Gallery Grid with Scroll Animations - Explicit rendering */}
           <div className="space-y-8">
-            {project.gallery.map((item, index) => (
-              <GalleryImage key={index} item={item} index={index} />
-            ))}
+            {gallery[0] && <GalleryImage url={gallery[0].url} caption={gallery[0].caption} index={0} />}
+            {gallery[1] && <GalleryImage url={gallery[1].url} caption={gallery[1].caption} index={1} />}
+            {gallery[2] && <GalleryImage url={gallery[2].url} caption={gallery[2].caption} index={2} />}
+            {gallery[3] && <GalleryImage url={gallery[3].url} caption={gallery[3].caption} index={3} />}
+            {gallery[4] && <GalleryImage url={gallery[4].url} caption={gallery[4].caption} index={4} />}
+            {gallery[5] && <GalleryImage url={gallery[5].url} caption={gallery[5].caption} index={5} />}
+            {gallery[6] && <GalleryImage url={gallery[6].url} caption={gallery[6].caption} index={6} />}
+            {gallery[7] && <GalleryImage url={gallery[7].url} caption={gallery[7].caption} index={7} />}
           </div>
         </div>
       </section>
