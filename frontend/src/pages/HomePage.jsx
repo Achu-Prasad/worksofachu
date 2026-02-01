@@ -16,12 +16,14 @@ const HomePage = () => {
       <Header />
       <main>
         <HeroSection />
-        <AboutSection />
-        <WhyIDesignSection />
-        <ExperienceSection />
         <ProjectsSection />
-        <ValuesSection />
+        <AboutSection />
+
+        <ExperienceSection />
+
+        {/* <ValuesSection /> */}
         <BeyondWorkSection />
+        {/* <WhyIDesignSection /> */}
         <ContactSection />
       </main>
       <Footer />

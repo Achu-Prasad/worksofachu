@@ -2,9 +2,9 @@
 
 export const personalInfo = {
   name: "Achu Prasad",
-  role: "UI/UX Designer & Product Designer",
+  role: "Product Designer",
   tagline: "I design with clarity, intention, and empathy.",
-  statement: "Creating meaningful digital experiences that connect people with products they love. Less noise. More meaning.",
+  statement: "I am a simple, grounded product designer with a curious mind and a heart for people and nature. I design with clarity, kindness, and the hope of making life a little more peaceful.",
   email: "hello@achuprasad.com",
   location: "Bangalore, India"
 };

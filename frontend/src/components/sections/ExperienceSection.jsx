@@ -32,25 +32,21 @@ const ExperienceSection = () => {
               transition={{ delay: index * 0.15, duration: 0.6, ease: "easeOut" }}
             >
               {/* Timeline Line */}
-              {index !== workExperience.length - 1 && (
-                <motion.div 
-                  className="absolute left-0 top-0 bottom-0 w-px bg-slate-200 hidden lg:block" 
-                  style={{ left: '7px' }}
-                  initial={{ scaleY: 0 }}
-                  animate={isInView ? { scaleY: 1 } : {}}
-                  transition={{ delay: index * 0.15 + 0.3, duration: 0.5 }}
-                />
-              )}
+              <motion.div
+                className="absolute left-0 top-0 bottom-0 w-px bg-slate-200 hidden lg:block"
+                style={{ left: '7.5px' }}
+                initial={{ scaleY: 0 }}
+                animate={isInView ? { scaleY: 1 } : {}}
+                transition={{ delay: index * 0.15 + 0.3, duration: 0.5 }}
+              />
 
-              <motion.div 
-                className="flex gap-6 lg:gap-12 py-8 border-b border-slate-200 last:border-b-0 hover:bg-white transition-colors -mx-6 px-6 rounded-lg cursor-pointer"
-                whileHover={{ x: 10, backgroundColor: "rgba(255,255,255,0.8)" }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              <motion.div
+                className="flex gap-6 lg:gap-12 py-8 border-b border-slate-200 last:border-b-0 -mx-6 px-6 rounded-lg"
               >
                 {/* Timeline Dot */}
-                <div className="hidden lg:flex items-start pt-2">
-                  <motion.div 
-                    className="w-4 h-4 rounded-full bg-slate-200 group-hover:bg-slate-900 transition-colors relative z-10"
+                <div className="hidden lg:flex items-center">
+                  <motion.div
+                    className="w-4 h-4 rounded-full bg-slate-200 relative z-10"
                     initial={{ scale: 0 }}
                     animate={isInView ? { scale: 1 } : {}}
                     transition={{ delay: index * 0.15 + 0.2, type: "spring", stiffness: 300 }}
@@ -61,7 +57,7 @@ const ExperienceSection = () => {
                 <div className="flex-1 grid md:grid-cols-3 gap-4 md:gap-8">
                   {/* Role & Company */}
                   <div className="md:col-span-1">
-                    <h3 className="text-lg font-medium text-slate-900 group-hover:text-slate-700 transition-colors">
+                    <h3 className="text-lg font-medium text-slate-900">
                       {job.role}
                     </h3>
                     <p className="text-slate-600 mt-1">{job.company}</p>
