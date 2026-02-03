@@ -73,8 +73,8 @@ const ExperienceSection = () => {
             >
               <motion.div
                 className={`bg-white rounded-xl sm:rounded-2xl border transition-colors duration-200 overflow-hidden ${expandedId === job.id
-                    ? 'border-slate-300 shadow-lg'
-                    : 'border-slate-200 hover:border-slate-300'
+                  ? 'border-slate-300 shadow-lg'
+                  : 'border-slate-200 hover:border-slate-300'
                   }`}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.995 }}
@@ -87,7 +87,7 @@ const ExperienceSection = () => {
                 >
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3">
-                      <h3 className="text-base sm:text-lg font-medium text-slate-900 truncate">
+                      <h3 className="text-base sm:text-lg font-medium text-slate-900 truncate ">
                         {job.role}
                       </h3>
                       <span className="text-sm sm:text-base text-slate-500 mt-0.5 sm:mt-0">

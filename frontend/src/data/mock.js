@@ -67,7 +67,7 @@ export const workExperience = [
     impact: "Created print advertisements and offline marketing assets to strengthen the college’s brand identity. Identified a digital presence gap and launched the college’s Instagram, growing it to 2,000+ organic followers within one month. Increased student engagement through daily posters, event creatives, and motion graphics content."
   },
   {
-    id: 4,
+    id: 5,
     role: "Motion Graphics Artist",
     company: "I and Learn Pvt Ltd",
     duration: "AUG 2022 — FEB 2023",

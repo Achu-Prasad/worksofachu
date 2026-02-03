@@ -1,18 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import { personalInfo } from '../../data/mock';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const lastScrollY = useRef(0);
+  const scrollThreshold = 10; // Minimum scroll distance to trigger hide/show
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+
+      // Update scrolled state for background styling
+      setIsScrolled(currentScrollY > 20);
+
+      // Determine scroll direction with threshold
+      if (Math.abs(currentScrollY - lastScrollY.current) > scrollThreshold) {
+        if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+          // Scrolling down & past threshold - hide navbar
+          setIsVisible(false);
+        } else {
+          // Scrolling up - show navbar
+          setIsVisible(true);
+        }
+        lastScrollY.current = currentScrollY;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -34,9 +53,9 @@ const Header = () => {
   return (
     <motion.header
       initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+      animate={{ y: isVisible ? 0 : -100 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled
         ? 'bg-white/90 backdrop-blur-md shadow-sm'
         : 'bg-transparent'
         }`}

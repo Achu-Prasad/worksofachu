@@ -7,7 +7,7 @@ import WhyIDesignSection from '../components/sections/WhyIDesignSection';
 import ExperienceSection from '../components/sections/ExperienceSection';
 import ProjectsSection from '../components/sections/ProjectsSection';
 import ValuesSection from '../components/sections/ValuesSection';
-import BeyondWorkSection from '../components/sections/BeyondWorkSection';
+import OtherWorksSection from '../components/sections/OtherWorksSection';
 import ContactSection from '../components/sections/ContactSection';
 
 const HomePage = () => {
@@ -22,7 +22,7 @@ const HomePage = () => {
         <ExperienceSection />
 
         {/* <ValuesSection /> */}
-        <BeyondWorkSection />
+        <OtherWorksSection />
         {/* <WhyIDesignSection /> */}
         <ContactSection />
       </main>
@@ -32,3 +32,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
