@@ -4,6 +4,18 @@ import preview1 from '../Assets/1 preview.png';
 import preview2 from '../Assets/2 preview.png';
 import preview3 from '../Assets/3 preview.png';
 
+// Guidly project images
+import guidlyPreview from '../Assets/Guidly/preview.png';
+import guidlyPreviewLong from '../Assets/Guidly/preview long.png';
+import guidly1 from '../Assets/Guidly/Desktop - 1.png';
+import guidly2 from '../Assets/Guidly/Desktop - 2.png';
+import guidly3 from '../Assets/Guidly/Desktop - 3.png';
+import guidly4 from '../Assets/Guidly/Desktop - 4.png';
+import guidly5 from '../Assets/Guidly/Desktop - 5.png';
+import guidly6 from '../Assets/Guidly/Desktop - 6.png';
+import guidly7 from '../Assets/Guidly/Desktop - 7.png';
+import guidly8 from '../Assets/Guidly/Desktop - 8.png';
+
 export const personalInfo = {
   name: "Achu Prasad",
   role: "Product Designer",
@@ -52,29 +64,29 @@ export const workExperience = [
 export const projects = [
   {
     id: 1,
-    slug: "fintech-mobile-app",
-    title: "Fintech Mobile App",
-    subtitle: "Personal finance made simple",
+    slug: "Guidly-mobile-app",
+    title: "Guidly Mobile App",
+    subtitle: "Finding your mentor is no more a headache",
     type: "Personal Project",
-    description: "A comprehensive mobile app design for personal finance management targeting young professionals. The app helps users track expenses, set budgets, and achieve their financial goals with an intuitive and clean interface.",
-    role: "UI/UX Designer — Responsible for end-to-end design including user research, wireframing, visual design, and prototyping.",
-    tags: ["Mobile App", "Fintech", "UI/UX Design"],
+    description: "Guidly is a community-driven mentorship platform designed to help people find mentors who align with their goals, interests, and vibe. It connects individuals with experienced mentors from different backgrounds, making guidance more accessible, personal, and local or global. Guidly focuses on meaningful connections through clear profiles, interest-based discovery, and simple interaction flows that reduce friction and encourage real conversations.",
+    role: "UI/UX Designer: Responsible for end-to-end design including user research, wireframing, visual design, and prototyping.",
+    tags: ["Figma", "Stich AI", "Perplexity AI",],
     liveLink: null,
-    prototypeLink: "https://figma.com/prototype/example",
-    thumbnail: preview1,
+    prototypeLink: "https://tinyurl.com/guidlyprototype",
+    thumbnail: guidlyPreview,
     heroMedia: {
       type: "image",
-      url: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=800&fit=crop"
+      url: guidlyPreviewLong
     },
     gallery: [
-      { type: "image", url: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=800&fit=crop", caption: "Dashboard Overview" },
-      { type: "image", url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop", caption: "Expense Tracking" },
-      { type: "image", url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop", caption: "Budget Planning" },
-      { type: "image", url: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200&h=800&fit=crop", caption: "Savings Goals" },
-      { type: "image", url: "https://images.unsplash.com/photo-1553729459-uj36hv58ad?w=1200&h=800&fit=crop", caption: "Transaction History" },
-      { type: "image", url: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=800&fit=crop", caption: "Analytics View" },
-      { type: "image", url: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&h=800&fit=crop", caption: "User Profile" },
-      { type: "image", url: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=1200&h=800&fit=crop", caption: "Settings & Preferences" }
+      { type: "image", url: guidly1, caption: "Dashboard Overview" },
+      { type: "image", url: guidly2, caption: "Expense Tracking" },
+      { type: "image", url: guidly3, caption: "Budget Planning" },
+      { type: "image", url: guidly4, caption: "Savings Goals" },
+      { type: "image", url: guidly5, caption: "Transaction History" },
+      { type: "image", url: guidly6, caption: "Analytics View" },
+      { type: "image", url: guidly7, caption: "User Profile" },
+      { type: "image", url: guidly8, caption: "Settings & Preferences" }
     ]
   },
   {

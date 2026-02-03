@@ -12,7 +12,7 @@ import ContactSection from '../components/sections/ContactSection';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Header />
       <main>
         <HeroSection />

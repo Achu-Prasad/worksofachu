@@ -1,55 +1,70 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, useSpring } from 'framer-motion';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink, Figma } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { projects } from '../data/mock';
 
-// Scroll-animated gallery image component
+// Spring config for smooth scroll animations
+const smoothSpringConfig = { stiffness: 80, damping: 25, restDelta: 0.001 };
+
+// Scroll-animated gallery image component with focus effect
 const GalleryImage = ({ url, caption, index }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-100px" });
-  
+
+  // Track scroll progress for entrance: from entering viewport to 70% of image visible
+  // "0.7 end" means when 70% of the image (from top) has entered the viewport
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ["start end", "0.7 end"]
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.85, 1, 1, 0.85]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [60, 0, -60]);
+  // Track scroll progress for exit: starts when 70% has left (only 30% visible)
+  // "0.7 start" means when 70% of the image has scrolled past the top
+  const { scrollYProgress: exitProgress } = useScroll({
+    target: ref,
+    offset: ["0.7 start", "end start"]
+  });
+
+  // Smooth spring for entrance (coming from bottom)
+  const smoothEntrance = useSpring(scrollYProgress, smoothSpringConfig);
+  // Smooth spring for exit (fading out as it leaves)
+  const smoothExit = useSpring(exitProgress, smoothSpringConfig);
+
+  // Entrance: slide up from bottom and fade in - complete at 70% visible
+  const yEntrance = useTransform(smoothEntrance, [0, 1], [100, 0]);
+  const opacityEntrance = useTransform(smoothEntrance, [0, 1], [0, 1]);
+  const scaleEntrance = useTransform(smoothEntrance, [0, 1], [0.92, 1]);
+
+  // Exit: fade out when 70% has scrolled out
+  const opacityExit = useTransform(smoothExit, [0, 1], [1, 0.15]);
+  const scaleExit = useTransform(smoothExit, [0, 1], [1, 0.95]);
 
   return (
     <motion.div
       ref={ref}
-      style={{ scale, opacity, y }}
-      className="relative"
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.05 }}
+      style={{
+        y: yEntrance,
+        opacity: opacityEntrance,
+        scale: scaleEntrance
+      }}
+      className="relative will-change-transform"
     >
-      <motion.div 
-        className="relative overflow-hidden rounded-2xl bg-slate-100 group"
+      <motion.div
+        style={{
+          opacity: opacityExit,
+          scale: scaleExit
+        }}
+        className="relative overflow-hidden rounded-2xl bg-slate-100 group will-change-transform"
         whileHover={{ scale: 1.02 }}
-        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
       >
         <img
           src={url}
           alt={caption}
           className="w-full aspect-[16/10] object-cover"
-          loading="lazy"
         />
-        
-        {/* Caption Overlay */}
-        <motion.div 
-          className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent"
-          initial={{ opacity: 0, y: 20 }}
-          whileHover={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <p className="text-white text-sm font-medium">{caption}</p>
-        </motion.div>
 
         {/* Frame Number */}
         <div className="absolute top-4 right-4">
@@ -65,12 +80,12 @@ const GalleryImage = ({ url, caption, index }) => {
 // Next Project Card
 const NextProjectCard = ({ project, direction }) => {
   const navigate = useNavigate();
-  
+
   const handleClick = () => {
     navigate(`/project/${project.slug}`);
     window.scrollTo(0, 0);
   };
-  
+
   return (
     <motion.div
       className="group cursor-pointer"
@@ -87,7 +102,7 @@ const NextProjectCard = ({ project, direction }) => {
           transition={{ duration: 0.6 }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-        
+
         {/* Direction Indicator */}
         <div className="absolute top-4 left-4 flex items-center gap-2 text-white/80 text-sm">
           {direction === 'prev' && <ArrowLeft size={16} />}
@@ -111,19 +126,21 @@ const ProjectDetailPage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const heroRef = useRef(null);
-  
+
   const project = projects.find(p => p.slug === slug);
   const currentIndex = projects.findIndex(p => p.slug === slug);
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : projects[projects.length - 1];
   const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : projects[0];
-  
+
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"]
   });
 
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
+  // Smooth the hero scroll progress for buttery animations
+  const smoothHeroProgress = useSpring(scrollYProgress, smoothSpringConfig);
+  const heroScale = useTransform(smoothHeroProgress, [0, 1], [1, 1.05]);
+  const heroOpacity = useTransform(smoothHeroProgress, [0, 0.6], [1, 0.4]);
 
   if (!project) {
     return (
@@ -143,7 +160,7 @@ const ProjectDetailPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Fixed Back Button */}
-      <motion.div 
+      <motion.div
         className="fixed top-6 left-6 z-50"
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -162,7 +179,7 @@ const ProjectDetailPage = () => {
 
       {/* Hero Section with Image */}
       <section ref={heroRef} className="relative h-[70vh] overflow-hidden">
-        <motion.div 
+        <motion.div
           className="absolute inset-0"
           style={{ scale: heroScale, opacity: heroOpacity }}
         >
@@ -201,7 +218,7 @@ const ProjectDetailPage = () => {
         <div className="max-w-5xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Description */}
-            <motion.div 
+            <motion.div
               className="lg:col-span-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -215,7 +232,7 @@ const ProjectDetailPage = () => {
             </motion.div>
 
             {/* Project Details */}
-            <motion.div 
+            <motion.div
               className="space-y-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -265,7 +282,7 @@ const ProjectDetailPage = () => {
                     <ArrowUpRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                   </motion.a>
                 )}
-                
+
                 {project.prototypeLink && (
                   <motion.a
                     href={project.prototypeLink}
@@ -307,7 +324,7 @@ const ProjectDetailPage = () => {
           </motion.div>
 
           {/* Gallery Grid with Scroll Animations - Explicit rendering */}
-          <div className="space-y-8">
+          <div className="space-y-16">
             {gallery[0] && <GalleryImage url={gallery[0].url} caption={gallery[0].caption} index={0} />}
             {gallery[1] && <GalleryImage url={gallery[1].url} caption={gallery[1].caption} index={1} />}
             {gallery[2] && <GalleryImage url={gallery[2].url} caption={gallery[2].caption} index={2} />}
@@ -323,7 +340,7 @@ const ProjectDetailPage = () => {
       {/* Next/Prev Project Navigation */}
       <section className="py-16 lg:py-24 bg-slate-50">
         <div className="max-w-5xl mx-auto px-6 lg:px-12">
-          <motion.h2 
+          <motion.h2
             className="text-sm text-slate-500 uppercase tracking-wide mb-8 text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -341,7 +358,7 @@ const ProjectDetailPage = () => {
             >
               <NextProjectCard project={prevProject} direction="prev" />
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
