@@ -10,9 +10,9 @@ const AboutSection = () => {
   const statsInView = useInView(statsRef, { once: true, margin: "-100px" });
 
   const stats = [
-    { number: "6+", label: "Years Experience" },
-    { number: "50+", label: "Projects Delivered" },
-    { number: "20+", label: "Happy Clients" }
+    { number: "4 Yrs", label: "Years In Design" },
+    { number: "6 Mo", label: "UI/UX Experience" },
+    { number: "10+", label: "Projects Delivered" }
   ];
 
   return (
@@ -96,7 +96,7 @@ const AboutSection = () => {
                   transition={{ delay: 0.7 + index * 0.15, duration: 0.5 }}
                 >
                   <motion.p
-                    className="text-3xl font-light text-slate-900"
+                    className="text-2xl font-light text-slate-900"
                     initial={{ scale: 0.5 }}
                     animate={statsInView ? { scale: 1 } : {}}
                     transition={{ delay: 0.8 + index * 0.15, type: "spring", stiffness: 200 }}

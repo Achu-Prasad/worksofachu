@@ -26,7 +26,7 @@ const ProjectCard = ({ project, index }) => {
       transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
     >
       <motion.div
-        className="bg-white rounded-2xl overflow-hidden border border-slate-200"
+        className="bg-white rounded-3xl overflow-hidden border border-slate-200"
         whileHover={{
           borderColor: "rgba(148, 163, 184, 0.5)",
           boxShadow: "0 20px 40px -15px rgba(0,0,0,0.1)",

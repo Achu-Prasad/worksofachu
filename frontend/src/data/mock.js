@@ -21,13 +21,13 @@ export const personalInfo = {
   role: "Product Designer",
   tagline: "I design with clarity, intention, and empathy.",
   statement: "I am a simple, grounded product designer with a curious mind and a heart for people and nature. I design with clarity, kindness, and the hope of making life a little more peaceful.",
-  email: "hello@achuprasad.com",
-  location: "Bangalore, India"
+  email: "achuprasad@zohomail.in",
+  location: "Kerala, India"
 };
 
 export const aboutData = {
   intro: "I'm Achu, a product designer passionate about crafting digital experiences that balance business goals with user needs. My journey began in graphic design, but I found my true calling in the intersection of strategy, empathy, and visual craft.",
-  philosophy: "I believe great design is invisible — it removes friction, creates clarity, and respects the user's time. Every pixel should earn its place.",
+  philosophy: "I believe great design is invisible it removes friction, creates clarity, and respects the user's time. Every pixel should earn its place.",
   transition: "Currently exploring product design to create lasting impact. I'm drawn to complex problems that require both analytical thinking and creative solutions."
 };
 
@@ -40,24 +40,38 @@ export const whyIDesign = {
 export const workExperience = [
   {
     id: 1,
-    role: "UI/UX Design Intern",
-    company: "Tech Startup",
-    duration: "2024 — Present",
-    impact: "Working on user research and interface design for mobile applications. Contributing to design system documentation and prototyping."
+    role: "Product Design Intern",
+    company: "Bassenine",
+    duration: "OCT 2025 — JAN 2026",
+    impact: "Designed user-centric experiences across B2B SaaS, B2B services, and consumer products. Led end-to-end website redesigns for live products, contributing to 6+ major web projects. Built scalable design systems, delivered clean developer handoffs, and supported branding through decks and social creatives across diverse domains."
   },
   {
     id: 2,
-    role: "Freelance Designer",
-    company: "Self-employed",
-    duration: "2023 — Present",
-    impact: "Designing brand identities and digital products for local businesses. Building expertise in user research and prototyping."
+    role: "UI/UX Design Intern",
+    company: "Nexotech",
+    duration: "JAN 2025 — SEP 2025",
+    impact: "Designed an end-to-end online course platform, defining core user flows and key pages. Conducted competitor analysis and UX research to drive design decisions, delivering high-fidelity UI optimized for usability and conversion."
   },
   {
     id: 3,
-    role: "Design Volunteer",
-    company: "Non-profit Organization",
-    duration: "2022 — 2023",
-    impact: "Created visual designs for social campaigns and educational materials. Collaborated with teams across different departments."
+    role: "Product Design Intern",
+    company: "Gistr",
+    duration: "APR 2025 — MAY 2025",
+    impact: "Designed user-centric product UI with accessible, visually refined components, ensuring strong contrast and a consistent design language. Supported brand growth by creating scalable social media templates and design assets."
+  },
+  {
+    id: 4,
+    role: "Graphic Designer & Social Media Manager",
+    company: "Gregorian Group of Institutions",
+    duration: "APR 2022 — JUN 2023",
+    impact: "Created print advertisements and offline marketing assets to strengthen the college’s brand identity. Identified a digital presence gap and launched the college’s Instagram, growing it to 2,000+ organic followers within one month. Increased student engagement through daily posters, event creatives, and motion graphics content."
+  },
+  {
+    id: 4,
+    role: "Motion Graphics Artist",
+    company: "I and Learn Pvt Ltd",
+    duration: "AUG 2022 — FEB 2023",
+    impact: "Created explainer videos for Grades 1–12 aligned with the NCERT curriculum, editing and syncing audio with custom animations. Designed motion graphics to simplify complex concepts and delivered engaging, high-quality educational content."
   }
 ];
 
@@ -197,5 +211,5 @@ export const socialLinks = [
   { name: "LinkedIn", url: "https://linkedin.com/in/achuprasad" },
   { name: "Dribbble", url: "https://dribbble.com/achuprasad" },
   { name: "Twitter", url: "https://twitter.com/achuprasad" },
-  { name: "Email", url: "mailto:hello@achuprasad.com" }
+  { name: "Email", url: "mailto:achuprasad@zohomail.in" }
 ];
