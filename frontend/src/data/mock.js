@@ -1,9 +1,5 @@
 // Mock data for Achu Prasad's Portfolio
 
-import preview1 from '../Assets/1 preview.png';
-import preview2 from '../Assets/2 preview.png';
-import preview3 from '../Assets/3 preview.png';
-
 // Guidly project images
 import guidlyPreview from '../Assets/Guidly/preview.png';
 import guidlyPreviewLong from '../Assets/Guidly/preview long.png';
@@ -15,6 +11,20 @@ import guidly5 from '../Assets/Guidly/Desktop - 5.png';
 import guidly6 from '../Assets/Guidly/Desktop - 6.png';
 import guidly7 from '../Assets/Guidly/Desktop - 7.png';
 import guidly8 from '../Assets/Guidly/Desktop - 8.png';
+
+// ICG project images
+import icgPreview from '../Assets/ICG/preview.png';
+import icg1 from '../Assets/ICG/ICG 1.png';
+import icg2 from '../Assets/ICG/ICG 2.png';
+import icg3 from '../Assets/ICG/ICG 3.png';
+import icg4 from '../Assets/ICG/ICG 4.png';
+import icg5 from '../Assets/ICG/ICG 5.png';
+import icg6 from '../Assets/ICG/ICG 6.png';
+import icg7 from '../Assets/ICG/ICG 7.png';
+import icg8 from '../Assets/ICG/ICG 8.png';
+
+// ICG project videos
+import icgScene2 from '../Assets/ICG/Scene-2.mp4';
 
 export const personalInfo = {
   name: "Achu Prasad",
@@ -105,83 +115,29 @@ export const projects = [
   },
   {
     id: 2,
-    slug: "healthcare-dashboard",
-    title: "Healthcare Dashboard",
-    subtitle: "Streamlining patient management",
+    slug: "icg-project",
+    title: "ICG Website Revamp",
+    subtitle: "ICG is a B2B Cybersecurity firm located in Florida",
     type: "Internship Project",
-    description: "A comprehensive dashboard design for healthcare professionals to manage patient data efficiently. The project focused on simplifying complex medical workflows and improving the overall user experience for clinic staff.",
-    role: "UI/UX Design Intern — Contributed to user research, wireframing, and UI design under senior designer mentorship.",
-    tags: ["Dashboard", "Healthcare", "Enterprise"],
-    liveLink: null,
-    prototypeLink: "https://figma.com/prototype/example",
-    thumbnail: preview2,
+    description: "In this role, I led the comprehensive redesign of the ICG website's user interface, focusing on a complete visual rebranding. My primary responsibility was to create scalable, responsive designs for key screens while establishing a robust design system. I defined variable systems for colors, fonts, and spacing to maintain strict consistency throughout the platform. Additionally, I produced custom imagery and integrated Rive animations to create a dynamic and engaging user experience.",
+    role: "UI/UX Designer — Complete design including concept development, visual design, and prototyping.",
+    tags: ["Ui Design", "Design Systems", "Visual Branding"],
+    liveLink: 'https://www.icgi.com/',
+    prototypeLink: null,
+    thumbnail: icgPreview,
     heroMedia: {
       type: "image",
-      url: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=800&fit=crop"
+      url: icgPreview
     },
     gallery: [
-      { type: "image", url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&h=800&fit=crop", caption: "Main Dashboard" },
-      { type: "image", url: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&h=800&fit=crop", caption: "Patient Records" },
-      { type: "image", url: "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=1200&h=800&fit=crop", caption: "Appointment Scheduler" },
-      { type: "image", url: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=1200&h=800&fit=crop", caption: "Medical History" },
-      { type: "image", url: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=1200&h=800&fit=crop", caption: "Prescription Management" },
-      { type: "image", url: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&h=800&fit=crop", caption: "Lab Results View" },
-      { type: "image", url: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1200&h=800&fit=crop", caption: "Billing Interface" },
-      { type: "image", url: "https://images.unsplash.com/photo-1576671081837-49000212a370?w=1200&h=800&fit=crop", caption: "Reports & Analytics" }
-    ]
-  },
-  {
-    id: 3,
-    slug: "food-delivery-redesign",
-    title: "Food Delivery Redesign",
-    subtitle: "Reimagining restaurant discovery",
-    type: "Personal Project",
-    description: "A conceptual redesign of a food delivery app focusing on improving restaurant discovery and the ordering experience. The design emphasizes visual appeal of food imagery and streamlined checkout process.",
-    role: "UI/UX Designer — Complete redesign concept including research, information architecture, and visual design.",
-    tags: ["Mobile App", "Food & Beverage", "Redesign"],
-    liveLink: null,
-    prototypeLink: "https://figma.com/prototype/example",
-    thumbnail: preview3,
-    heroMedia: {
-      type: "image",
-      url: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&h=800&fit=crop"
-    },
-    gallery: [
-      { type: "image", url: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&h=800&fit=crop", caption: "Home Screen" },
-      { type: "image", url: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop", caption: "Restaurant Listing" },
-      { type: "image", url: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=1200&h=800&fit=crop", caption: "Menu View" },
-      { type: "image", url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&h=800&fit=crop", caption: "Item Details" },
-      { type: "image", url: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=1200&h=800&fit=crop", caption: "Cart & Checkout" },
-      { type: "image", url: "https://images.unsplash.com/photo-1482049016gy-2d1ec7ab7445?w=1200&h=800&fit=crop", caption: "Order Tracking" },
-      { type: "image", url: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=1200&h=800&fit=crop", caption: "Reviews & Ratings" },
-      { type: "image", url: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1200&h=800&fit=crop", caption: "Favorites Collection" }
-    ]
-  },
-  {
-    id: 4,
-    slug: "travel-booking-app",
-    title: "Travel Booking App",
-    subtitle: "Discover your next adventure",
-    type: "Live Project",
-    description: "A travel booking application designed to help users discover and book unique travel experiences. The app features an immersive visual design that inspires wanderlust while maintaining functional booking flows.",
-    role: "UI Designer — Visual design and prototyping for key user flows including search, booking, and trip management.",
-    tags: ["Mobile App", "Travel", "Booking"],
-    liveLink: "https://example-travel-app.com",
-    prototypeLink: "https://figma.com/prototype/example",
-    thumbnail: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop",
-    heroMedia: {
-      type: "image",
-      url: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=800&fit=crop"
-    },
-    gallery: [
-      { type: "image", url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=800&fit=crop", caption: "Destination Discovery" },
-      { type: "image", url: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&h=800&fit=crop", caption: "Search Results" },
-      { type: "image", url: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&h=800&fit=crop", caption: "Trip Details" },
-      { type: "image", url: "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=1200&h=800&fit=crop", caption: "Booking Flow" },
-      { type: "image", url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&h=800&fit=crop", caption: "Itinerary View" },
-      { type: "image", url: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=1200&h=800&fit=crop", caption: "Accommodation Options" },
-      { type: "image", url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop", caption: "Activity Booking" },
-      { type: "image", url: "https://images.unsplash.com/photo-1528127269322-539801943592?w=1200&h=800&fit=crop", caption: "Trip Summary" }
+      { type: "video", url: icgScene2, caption: "ICG Design 1" },
+      { type: "image", url: icg2, caption: "ICG Design 2" },
+      { type: "image", url: icg3, caption: "ICG Design 3" },
+      { type: "image", url: icg4, caption: "ICG Design 4" },
+      { type: "image", url: icg5, caption: "ICG Design 5" },
+      { type: "image", url: icg6, caption: "ICG Design 6" },
+      { type: "image", url: icg7, caption: "ICG Design 7" },
+      { type: "image", url: icg8, caption: "ICG Design 8" }
     ]
   }
 ];

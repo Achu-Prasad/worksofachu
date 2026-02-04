@@ -63,10 +63,10 @@ const ProjectCard = ({ project, index }) => {
         <div className="p-6 lg:p-8">
           <div className="flex items-start justify-between gap-4 mb-3">
             <div>
-              <h3 className="text-xl lg:text-2xl font-medium text-slate-900 group-hover:text-slate-700 transition-colors">
+              <h3 className="text-xl lg:text-xl font-medium text-slate-900 group-hover:text-slate-700 transition-colors">
                 {project.title}
               </h3>
-              <p className="text-slate-500 mt-1">
+              <p className="text-slate-500 mt-2">
                 {project.subtitle}
               </p>
             </div>
@@ -80,7 +80,7 @@ const ProjectCard = ({ project, index }) => {
           </div>
 
           {/* Tags - Simplified without map */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mt-2">
             <Badge variant="secondary" className="bg-slate-100 text-slate-600 font-normal">
               {project.tags[0]}
             </Badge>
@@ -122,10 +122,9 @@ const ProjectsSection = () => {
 
         {/* Projects Grid - Explicit rendering */}
         <div className="grid md:grid-cols-2 gap-8">
-          {projects[0] && <ProjectCard project={projects[0]} index={0} />}
-          {projects[1] && <ProjectCard project={projects[1]} index={1} />}
-          {projects[2] && <ProjectCard project={projects[2]} index={2} />}
-          {projects[3] && <ProjectCard project={projects[3]} index={3} />}
+          {projects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
         </div>
       </div>
     </section>

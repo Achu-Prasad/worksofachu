@@ -9,35 +9,27 @@ import { projects } from '../data/mock';
 // Spring config for smooth scroll animations
 const smoothSpringConfig = { stiffness: 80, damping: 25, restDelta: 0.001 };
 
-// Scroll-animated gallery image component with focus effect
-const GalleryImage = ({ url, caption, index }) => {
+// Scroll-animated gallery item component with focus effect
+const GalleryItem = ({ url, type, caption, index }) => {
   const ref = useRef(null);
 
-  // Track scroll progress for entrance: from entering viewport to 70% of image visible
-  // "0.7 end" means when 70% of the image (from top) has entered the viewport
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "0.7 end"]
   });
 
-  // Track scroll progress for exit: starts when 70% has left (only 30% visible)
-  // "0.7 start" means when 70% of the image has scrolled past the top
   const { scrollYProgress: exitProgress } = useScroll({
     target: ref,
     offset: ["0.7 start", "end start"]
   });
 
-  // Smooth spring for entrance (coming from bottom)
   const smoothEntrance = useSpring(scrollYProgress, smoothSpringConfig);
-  // Smooth spring for exit (fading out as it leaves)
   const smoothExit = useSpring(exitProgress, smoothSpringConfig);
 
-  // Entrance: slide up from bottom and fade in - complete at 70% visible
   const yEntrance = useTransform(smoothEntrance, [0, 1], [100, 0]);
   const opacityEntrance = useTransform(smoothEntrance, [0, 1], [0, 1]);
   const scaleEntrance = useTransform(smoothEntrance, [0, 1], [0.92, 1]);
 
-  // Exit: fade out when 70% has scrolled out
   const opacityExit = useTransform(smoothExit, [0, 1], [1, 0.15]);
   const scaleExit = useTransform(smoothExit, [0, 1], [1, 0.95]);
 
@@ -56,22 +48,31 @@ const GalleryImage = ({ url, caption, index }) => {
           opacity: opacityExit,
           scale: scaleExit
         }}
-        className="relative overflow-hidden rounded-2xl bg-slate-100 group will-change-transform"
+        className="relative overflow-hidden rounded-2xl bg-slate-100 group will-change-transform border border-slate-200"
         whileHover={{ scale: 1.02 }}
         transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
       >
-        <img
-          src={url}
-          alt={caption}
-          className="w-full aspect-[16/10] object-cover"
-        />
+        {type === 'video' ? (
+          <video
+            src={url}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full aspect-[16/10] object-cover"
+          />
+        ) : (
+          <img
+            src={url}
+            alt={caption}
+            className="w-full aspect-[16/10] object-cover"
+          />
+        )}
 
-        {/* Frame Number */}
-        <div className="absolute top-4 right-4">
-          <span className="text-xs text-white/60 font-mono bg-black/30 backdrop-blur-sm px-2 py-1 rounded">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-        </div>
+        {/* Watermark Cover - Responsive & hidden on mobile - Only for videos */}
+        {type === 'video' && (
+          <div className="hidden md:block absolute bottom-2 right-0 w-[12vw] h-[4vw] max-w-[160px] max-h-[48px] min-w-[100px] min-h-[32px] bg-white rounded-l-md" />
+        )}
       </motion.div>
     </motion.div>
   );
@@ -183,11 +184,22 @@ const ProjectDetailPage = () => {
           className="absolute inset-0"
           style={{ scale: heroScale, opacity: heroOpacity }}
         >
-          <img
-            src={project.heroMedia.url}
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
+          {project.heroMedia.type === 'video' ? (
+            <video
+              src={project.heroMedia.url}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <img
+              src={project.heroMedia.url}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60" />
         </motion.div>
 
@@ -325,14 +337,15 @@ const ProjectDetailPage = () => {
 
           {/* Gallery Grid with Scroll Animations - Explicit rendering */}
           <div className="space-y-16">
-            {gallery[0] && <GalleryImage url={gallery[0].url} caption={gallery[0].caption} index={0} />}
-            {gallery[1] && <GalleryImage url={gallery[1].url} caption={gallery[1].caption} index={1} />}
-            {gallery[2] && <GalleryImage url={gallery[2].url} caption={gallery[2].caption} index={2} />}
-            {gallery[3] && <GalleryImage url={gallery[3].url} caption={gallery[3].caption} index={3} />}
-            {gallery[4] && <GalleryImage url={gallery[4].url} caption={gallery[4].caption} index={4} />}
-            {gallery[5] && <GalleryImage url={gallery[5].url} caption={gallery[5].caption} index={5} />}
-            {gallery[6] && <GalleryImage url={gallery[6].url} caption={gallery[6].caption} index={6} />}
-            {gallery[7] && <GalleryImage url={gallery[7].url} caption={gallery[7].caption} index={7} />}
+            {gallery.map((item, index) => (
+              <GalleryItem
+                key={index}
+                url={item.url}
+                type={item.type}
+                caption={item.caption}
+                index={index}
+              />
+            ))}
           </div>
         </div>
       </section>
