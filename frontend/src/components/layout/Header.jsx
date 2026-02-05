@@ -43,11 +43,28 @@ const Header = () => {
   ];
 
   const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Determine if we are on mobile (this helps apply different scroll logic if needed)
+    const isMobile = window.innerWidth < 768;
+
+    // Close mobile menu first
     setIsMobileMenuOpen(false);
+
+    // Use a small timeout for mobile to let the menu closing start
+    const delay = isMobile ? 150 : 0;
+
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        const offset = 80; // Offset to account for sticky navbar
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, delay);
   };
 
   return (
@@ -145,7 +162,7 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden w-full px-6"
+            className="md:hidden w-full max-w-6xl mx-auto px-6 lg:px-12"
           >
             <div className="overflow-hidden bg-white/95 backdrop-blur-md rounded-3xl shadow-lg border border-slate-100">
               <div className="py-6 px-6">
