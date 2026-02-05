@@ -159,7 +159,10 @@ const ProjectDetailPage = () => {
   const gallery = project.gallery || [];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div
+      className="min-h-screen"
+      style={{ backgroundColor: project.backgroundColor || '#ffffff' }}
+    >
       {/* Fixed Back Button */}
       <motion.div
         className="fixed top-6 left-6 z-50"
@@ -169,7 +172,7 @@ const ProjectDetailPage = () => {
       >
         <motion.button
           onClick={() => navigate('/')}
-          className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-slate-200"
+          className="flex items-center gap-2 text-white bg-slate-900/90 backdrop-blur-sm px-5 py-2.5 rounded-xl shadow-lg border border-white/10 hover:bg-slate-800 transition-all"
           whileHover={{ x: -5 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -178,52 +181,14 @@ const ProjectDetailPage = () => {
         </motion.button>
       </motion.div>
 
-      {/* Hero Section with Image */}
+      {/* Hero Section Hidden for now
       <section ref={heroRef} className="relative h-[70vh] overflow-hidden">
-        <motion.div
-          className="absolute inset-0"
-          style={{ scale: heroScale, opacity: heroOpacity }}
-        >
-          {project.heroMedia.type === 'video' ? (
-            <video
-              src={project.heroMedia.url}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <img
-              src={project.heroMedia.url}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60" />
-        </motion.div>
-
-        {/* Hero Content */}
-        <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-16">
-          <div className="max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              <Badge className="bg-white/20 backdrop-blur-sm text-white border-white/30 mb-4">
-                {project.type}
-              </Badge>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight mb-3">
-                {project.title}
-              </h1>
-              <p className="text-xl text-white/80 font-light">
-                {project.subtitle}
-              </p>
-            </motion.div>
-          </div>
-        </div>
+        ... (hero content)
       </section>
+      */}
+
+      {/* Spacer for fixed back button */}
+      <div className="pt-24" />
 
       {/* Project Info Section */}
       <section className="py-16 lg:py-24 bg-white">
@@ -278,37 +243,33 @@ const ProjectDetailPage = () => {
               </div>
 
               {/* CTAs */}
-              <div className="space-y-3 pt-4">
+              <div className="flex flex-col gap-4 pt-4">
                 {project.liveLink && (
-                  <motion.a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-slate-900 hover:text-slate-700 transition-colors group"
-                    whileHover={{ x: 5 }}
-                  >
-                    <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center group-hover:bg-slate-800 transition-colors">
-                      <ExternalLink size={18} className="text-white" />
-                    </div>
-                    <span className="font-medium">View Live Project</span>
-                    <ArrowUpRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </motion.a>
+                  <motion.div className="w-full sm:w-auto" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        variant="outline"
+                        className="w-hug flex items-center justify-center gap-2 border-slate-300 bg-white text-slate-700 hover:bg-slate-50 px-6 py-6 text-sm rounded-xl transition-all duration-300"
+                      >
+                        View Live Project
+                        <ExternalLink size={16} />
+                      </Button>
+                    </a>
+                  </motion.div>
                 )}
 
                 {project.prototypeLink && (
-                  <motion.a
-                    href={project.prototypeLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-slate-600 hover:text-slate-900 transition-colors group"
-                    whileHover={{ x: 5 }}
-                  >
-                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-slate-200 transition-colors">
-                      <Figma size={18} className="text-slate-600" />
-                    </div>
-                    <span className="font-medium">View Prototype</span>
-                    <ArrowUpRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </motion.a>
+                  <motion.div className="w-full sm:w-auto" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <a href={project.prototypeLink} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        variant="outline"
+                        className="w-full flex items-center justify-center gap-2 border-slate-300 bg-white text-slate-700 hover:bg-slate-50 px-6 py-6 text-sm rounded-xl transition-all duration-300"
+                      >
+                        View Prototype
+                        <Figma size={16} />
+                      </Button>
+                    </a>
+                  </motion.div>
                 )}
               </div>
             </motion.div>
@@ -394,9 +355,9 @@ const ProjectDetailPage = () => {
             transition={{ duration: 0.6 }}
           >
             <p className="text-slate-600 mb-6">Interested in working together?</p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link to="/#contact">
-                <Button className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-6 text-base rounded-full">
+                <Button className="bg-slate-800 hover:bg-slate-700 text-white px-10 py-7 text-lg rounded-xl shadow-lg transition-all duration-300">
                   Get in Touch
                 </Button>
               </Link>
