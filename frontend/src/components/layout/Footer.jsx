@@ -34,8 +34,8 @@ const Footer = () => {
             </p>
           </motion.div>
 
-          {/* Funny Text */}
-          <motion.div
+          {/* Funny Text (Hidden) */}
+          {/* <motion.div
             className="md:text-right"
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -45,7 +45,7 @@ const Footer = () => {
               "No blueprints, just vibes. <br className="hidden md:block" />
               This entire portfolio was vibe-coded into existence ✨"
             </p>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Bottom Section */}
