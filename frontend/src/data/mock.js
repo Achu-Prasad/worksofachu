@@ -28,9 +28,11 @@ export const personalInfo = {
   name: "Achu Prasad",
   role: "Product Designer",
   tagline: "I design with clarity, intention, and empathy.",
-  statement: "I am a simple, grounded product designer with a curious mind and a heart for people and nature. I design with clarity, kindness, and the hope of making life a little more peaceful.",
+  statement: "I’m a Product Designer with 2+ years of design experience, focused on building thoughtful digital products. I turn complex problems into simple, intuitive, and scalable user experiences.Curious, analytical, and ownership-driven, I design with clarity, purpose, and usability at the core.",
   email: "achuprasad@zohomail.in",
-  location: "Kerala, India"
+
+  location: "Kerala, India",
+  resumeUrl: "https://drive.google.com/file/d/1wznmmd4kD_IiaHTw295VY33KrV2m9yKM/view?usp=sharing"
 };
 
 export const aboutData = {
@@ -51,7 +53,7 @@ export const workExperience = [
     role: "Product Design Intern",
     company: "Bassenine",
     duration: "OCT 2025 — JAN 2026",
-    impact: "Designed user-centric experiences across B2B SaaS, B2B services, and consumer products. Led end-to-end website redesigns for live products, contributing to 6+ major web projects. Built scalable design systems, delivered clean developer handoffs, and supported branding through decks and social creatives across diverse domains."
+    impact: "I’m a Product Designer with 2+ years of design experience, focused on building thoughtful digital products. I turn complex problems into simple, intuitive, and scalable user experiences.Curious, analytical, and ownership-driven, I design with clarity, purpose, and usability at the core."
   },
   {
     id: 2,
@@ -93,15 +95,17 @@ export const projects = [
     type: "Personal Project",
     description: "Guidly is a **community-driven mentorship platform** designed to help people find mentors who align with their goals, interests, and vibe. It connects individuals with **experienced mentors** from different backgrounds, making guidance more accessible, personal, and local or global. Guidly focuses on **meaningful connections** through clear profiles, interest-based discovery, and simple interaction flows that reduce friction and encourage real conversations.",
     role: "UI/UX Designer",
+    showHero: false,
     backgroundColor: "#ffffff",
-    tags: ["Figma", "Stich AI", "Perplexity AI",],
+    tags: ["User Research", "UI Design", "Vibe-Prototyping",],
     projectTypeDetail: "Personal Project • Finding your mentor is no more a headache",
     supervisedBy: "Self-Directed",
     team: [{ name: "Achu Prasad", role: "Solo" }],
     contribution: ["Ui Design", "UX Research", "Prototyping"],
     tools: ["Figma", "Stich AI", "Perplexity AI"],
     timeline: "4 Weeks",
-    liveLink: null,
+    liveLink: "https://achusfolio.framer.website/guidly-case-study",
+    framerCaseStudyUrl: "https://achusfolio.framer.website/guidly-case-study",
     prototypeLink: "https://guidlyproto.netlify.app/",
     thumbnail: guidlyPreview,
     heroMedia: {
@@ -109,14 +113,14 @@ export const projects = [
       url: guidlyPreview
     },
     gallery: [
-      { type: "image", url: guidly1, caption: "Dashboard Overview" },
-      { type: "image", url: guidly2, caption: "Expense Tracking" },
-      { type: "image", url: guidly3, caption: "Budget Planning" },
-      { type: "image", url: guidly4, caption: "Savings Goals" },
-      { type: "image", url: guidly5, caption: "Transaction History" },
-      { type: "image", url: guidly6, caption: "Analytics View" },
-      { type: "image", url: guidly7, caption: "User Profile" },
-      { type: "image", url: guidly8, caption: "Settings & Preferences" }
+      { type: "image", url: guidly1, sectionTitle: "Dashboard Overview", caption: "Dashboard Overview" },
+      { type: "image", url: guidly2, sectionTitle: "Expense Tracking", caption: "Expense Tracking" },
+      { type: "image", url: guidly3, sectionTitle: "Budget Planning", caption: "Budget Planning" },
+      { type: "image", url: guidly4, sectionTitle: "Savings Goals", caption: "Savings Goals" },
+      { type: "image", url: guidly5, sectionTitle: "Transaction History", caption: "Transaction History" },
+      { type: "image", url: guidly6, sectionTitle: "Analytics View", caption: "Analytics View" },
+      { type: "image", url: guidly7, sectionTitle: "User Profile", caption: "User Profile" },
+      { type: "image", url: guidly8, sectionTitle: "Settings & Preferences", caption: "Settings & Preferences" }
     ]
   },
   {
@@ -132,11 +136,12 @@ export const projects = [
       { name: "Basil Alosious", role: "PM" },
       { name: "Reva Harke", role: "Dev" }
     ],
-    contribution: ["Ui Design", "Graphics", "Branding"],
+    contribution: ["UI Design", "Interaction Design", "Branding"],
     tools: ["Figma", "Photoshop"],
     timeline: "1 Month",
     description: "ICG is a U.S.-based technology company founded in 1977, specializing in managed IT and cloud services for businesses that prioritize security, reliability, and scale. **As the Product Designer on this project, I led the visual and experiential direction of the website **, shaping both the UI and the overall creative vision. My role focused on designing a cohesive, adaptable system that could scale with the company while delivering a seamless user experience across touchpoints. Alongside the website UI, **I defined a distinct brand identity, created comprehensive style guidelines, and designed the full marketing website in Figma** laying a strong foundation for consistent future growth.",
     role: "Product Designer",
+    showHero: false,
     backgroundColor: "#f1f1f1",
     tags: ["Ui Design", "Design Systems", "Visual Branding"],
     liveLink: 'https://www.icgi.com/',
@@ -147,12 +152,12 @@ export const projects = [
       url: icgPreview
     },
     gallery: [
-      { type: "video", url: icgScene2, caption: "I designed **13+ distinct website pages** for ICG, including several pages powered by **Webflow CMS**, which required a strong focus on scalability and flexibility. The designs were built to accommodate varying content lengths and structures without breaking layout or hierarchy. I iterated extensively across multiple layout directions, balancing **responsiveness, feasibility, and visual consistency** to ensure the system could perform reliably across devices and future content updates." },
-      { type: "video", url: icgScene3, caption: "The website content included multiple timelines and step-based narratives defined by the product team, with messaging that varied significantly in length across sections. To ensure the design remained effective in both short and long-form scenarios, I focused on layouts that could gracefully adapt without overwhelming users. Recognizing that dense, **linear content increases cognitive load and reduces engagement**, **I introduced scroll-based design patterns** that progressively revealed information—making complex content easier to consume and more engaging to read." },
-      { type: "video", url: icgScene4, caption: "I designed and implemented **purposeful micro-interactions across the website to enhance usability and create moments of delight**, without distracting from core tasks. Each interaction was carefully aligned with ICG’s brand identity, ensuring consistency in motion, feedback, and tone across all pages while reinforcing a cohesive and polished user experience." },
-      { type: "video", url: icgScene6, caption: "The existing value proposition section **no longer reflected ICG’s current services or priorities**. The messaging felt dated, lacked clarity, and failed to communicate meaningful value to users. To realign this critical section with the company’s present-day offerings and positioning, I explored 30+ design iterations, refining both messaging hierarchy and visual structure. **The final direction delivers a clearer, more relevant value proposition** that better represents ICG’s evolving services and brand." },
-      { type: "video", url: icgScene7, caption: "I established a structured **design system** by defining color, typography, and spacing variables to ensure consistency and long-term scalability across the website. These variables translated seamlessly into Webflow, enabling developers to easily replicate and maintain styles without friction. We used **Relume components** as a foundational framework, which significantly accelerated the design-to-development process and helped convert the designs into a fully functional website with high fidelity and efficiency." },
-      { type: "video", url: icgScene8, caption: "Buttons were the only component designed separately, allowing for greater control over interaction, hierarchy, and accessibility across the interface. I created multiple button variants optimized for different surfaces (light and dark) and use cases, ensuring clarity and consistency in all contexts. Each variant included **custom styles and motion behaviors**, reinforcing usability while staying aligned with the brand. To support long-term consistency, I documented these patterns through a clear **style guide and typography guidelines** for both design and development teams." }
+      { type: "video", url: icgScene2, sectionTitle: "1. Designed 13+ website pages with scalable CMS structure", caption: "I designed 13+ distinct website page for ICG, including several pages powered by Webflow CMS, which required a strong focus on scalability and flexibility. The designs were built to accommodate varying content lengths and structures without breaking layout or hierarchy. I iterated extensively across multiple layout directions, balancing responsiveness, feasibility, and visual consistency to ensure the system could perform reliably across devices and future content updates." },
+      { type: "video", url: icgScene3, sectionTitle: "2. Improved content flow with progressive scroll design", caption: "The website content included multiple timelines and step-based narratives defined by the product team, with messaging that varied significantly in length across sections. To ensure the design remained effective in both short and long-form scenarios, I focused on layouts that could gracefully adapt without overwhelming users. Recognizing that dense, linear content increases cognitive load and reduces engagement, I introduced scroll-based design patterns that progressively revealed information—making complex content easier to consume and more engaging to read." },
+      { type: "video", url: icgScene4, sectionTitle: "3. Enhanced user experience with subtle micro-Interactions", caption: "I designed and implemented purposeful micro-interactions across the website to enhance usability and create moments of delight, without distracting from core tasks. Each interaction was carefully aligned with ICG’s brand identity, ensuring consistency in motion, feedback, and tone across all pages while reinforcing a cohesive and polished user experience." },
+      { type: "video", url: icgScene6, sectionTitle: "4. Transformed a dated value proposition into clear, relevant messaging", caption: "The existing value proposition section no longer reflected ICG’s current services or priorities. The messaging felt dated, lacked clarity, and failed to communicate meaningful value to users. To realign this critical section with the company’s present-day offerings and positioning, I explored 30+ design iterations, refining both messaging hierarchy and visual structure. The final direction delivers a clearer, more relevant value proposition that better represents ICG’s evolving services and brand." },
+      { type: "video", url: icgScene7, sectionTitle: "5. Built a scalable design system that accelerated development", caption: "I established a structured design system by defining color, typography, and spacing variables to ensure consistency and long-term scalability across the website. These variables translated seamlessly into Webflow, enabling developers to easily replicate and maintain styles without friction. We used Relume components as a foundational framework, which significantly accelerated the design-to-development process and helped convert the designs into a fully functional website with high fidelity and efficiency." },
+      { type: "video", url: icgScene8, sectionTitle: "6. Created consistent button variants & color and typography style across the website", caption: "Buttons were the only component designed separately, allowing for greater control over interaction, hierarchy, and accessibility across the interface. I created multiple button variants optimized for different surfaces (light and dark) and use cases, ensuring clarity and consistency in all contexts. Each variant included custom styles and motion behaviors, reinforcing usability while staying aligned with the brand. To support long-term consistency, I documented these patterns through a clear style guide and typography guidelines for both design and development teams." }
     ]
   }
 ];
@@ -179,7 +184,8 @@ export const beyondWork = {
 };
 
 export const socialLinks = [
-  { name: "LinkedIn", url: "https://linkedin.com/in/achuprasad" },
+  { name: "LinkedIn", url: "https://linkedin.com/in/achu-prasad" },
+  { name: "WhatsApp", url: "https://wa.me/9037613183" },
   { name: "Dribbble", url: "https://dribbble.com/achuprasad" },
   { name: "Twitter", url: "https://twitter.com/achuprasad" },
   { name: "Email", url: "mailto:achuprasad@zohomail.in" }

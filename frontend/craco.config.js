@@ -47,20 +47,6 @@ const webpackConfig = {
       '@': path.resolve(__dirname, 'src'),
     },
     configure: (webpackConfig) => {
-
-      // Add ignored patterns to reduce watched directories
-      webpackConfig.watchOptions = {
-        ...webpackConfig.watchOptions,
-        ignored: [
-          '**/node_modules/**',
-          '**/.git/**',
-          '**/build/**',
-          '**/dist/**',
-          '**/coverage/**',
-          '**/public/**',
-        ],
-      };
-
       // Add health check plugin to webpack if enabled
       if (config.enableHealthCheck && healthPluginInstance) {
         webpackConfig.plugins.push(healthPluginInstance);
@@ -78,6 +64,25 @@ if (config.enableVisualEdits && babelMetadataPlugin) {
 }
 
 webpackConfig.devServer = (devServerConfig) => {
+  // Fix: Enable polling for file changes (required for Windows/WSL in some cases)
+  // This ensures that changes in the src folder are detected by the dev server
+  devServerConfig.static = {
+    ...devServerConfig.static,
+    watch: {
+      usePolling: true,
+      interval: 1000,
+    },
+  };
+
+  // Watch the src directory explicitly for changes
+  devServerConfig.watchFiles = {
+    paths: ["src/**/*"],
+    options: {
+      usePolling: true,
+      interval: 1000,
+    },
+  };
+
   // Apply visual edits dev server setup only if enabled
   if (config.enableVisualEdits && setupDevServer) {
     devServerConfig = setupDevServer(devServerConfig);

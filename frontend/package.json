@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Achu-Prasad.github.io/Portfolio-Emergent",
+  "homepage": "https://achu-prasad.github.io/worksofachu",
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@phosphor-icons/react": "^2.1.10",

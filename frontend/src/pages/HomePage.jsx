@@ -17,12 +17,10 @@ const HomePage = () => {
       <main>
         <HeroSection />
         <ProjectsSection />
-        <AboutSection />
-
-        <ExperienceSection />
-
-        {/* <ValuesSection /> */}
         <OtherWorksSection />
+        <AboutSection />
+        <ExperienceSection />
+        {/* <ValuesSection /> */}
         {/* <WhyIDesignSection /> */}
         <ContactSection />
       </main>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
+import { ArrowUpRight, Mail, MapPin, Linkedin, MessageCircle } from 'lucide-react';
 import { Button } from '../ui/button';
 import { personalInfo, socialLinks } from '../../data/mock';
 import { FadeUp, SlideInLeft, SlideInRight } from '../animations/MotionWrapper';
@@ -25,6 +25,27 @@ const ContactSection = () => {
               Whether you have a question or just want to say hi, feel free to reach out.
             </p>
 
+            {/* Social Action Links */}
+            <div className="flex flex-wrap gap-4 mt-10">
+              {socialLinks.filter(link => ["LinkedIn", "WhatsApp"].includes(link.name)).map((link, i) => (
+                <motion.a
+                  key={i}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -3 }}
+                  className="flex items-center gap-2.5 px-5 py-3 rounded-full bg-white border border-slate-200 shadow-sm hover:border-slate-900 transition-colors duration-300"
+                >
+                  {link.name === "LinkedIn" ? (
+                    <Linkedin className="w-4 h-4 text-[#0077b5]" />
+                  ) : (
+                    <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                  )}
+                  <span className="text-sm font-medium text-slate-800">{link.name}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-900 transition-colors" />
+                </motion.a>
+              ))}
+            </div>
           </SlideInLeft>
 
           {/* Right Content - CTA Card */}

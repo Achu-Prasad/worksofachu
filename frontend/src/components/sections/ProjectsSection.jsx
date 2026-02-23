@@ -13,7 +13,11 @@ const ProjectCard = ({ project, index }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/project/${project.slug}`);
+    if (project.framerCaseStudyUrl) {
+      window.open(project.framerCaseStudyUrl, "_blank", "noopener,noreferrer");
+    } else {
+      navigate(`/project/${project.slug}`);
+    }
   };
 
   return (

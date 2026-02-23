@@ -132,8 +132,12 @@ const NextProjectCard = ({ project, direction }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/project/${project.slug}`);
-    window.scrollTo(0, 0);
+    if (project.framerCaseStudyUrl) {
+      window.open(project.framerCaseStudyUrl, "_blank", "noopener,noreferrer");
+    } else {
+      navigate(`/project/${project.slug}`);
+      window.scrollTo(0, 0);
+    }
   };
 
   return (
@@ -311,8 +315,8 @@ const ProjectDetailsV2 = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: [0.215, 0.61, 0.355, 1] }}
-          className="mt-10 text-base md:text-lg text-slate-700 dark:text-slate-300 font-normal w-full font-sans"
-          style={{ lineHeight: '1.8' }}
+          className="mt-10 text-[14px] md:text-lg text-slate-700 dark:text-slate-300 font-normal w-full font-sans"
+          style={{ lineHeight: '1.7' }}
         >
           {formatText(project.description)}
         </motion.p>
@@ -326,157 +330,134 @@ const ProjectDetailsV2 = () => {
         />
 
         {/* Specification Box - Original Layout */}
-        <div className="mt-16 flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-24 w-full">
-          {/* Left: Metadata Content - Original 3-column Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12 sm:gap-x-12 sm:gap-y-12 flex-1 w-full">
-            <InfoSection title="Project type" index={0}>
-              {project.type}
-            </InfoSection>
+        <div className="mt-24">
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-24 w-full">
+            {/* Left: Metadata Content - Original 3-column Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12 sm:gap-x-12 sm:gap-y-12 flex-1 w-full">
+              <InfoSection title="Project type" index={0}>
+                {project.type}
+              </InfoSection>
 
-            <InfoSection title="The team" index={1}>
-              <div className="flex flex-col gap-2">
-                {project.team?.map((member, i) => (
-                  <div key={i} className="flex items-center gap-2 text-slate-900 dark:text-white">
-                    <span>{member.name}</span>
-                    <span className="text-[10px] font-bold text-slate-400 dark:text-slate-600 tracking-tight px-1.5 py-0.5 border border-slate-200 dark:border-slate-800 rounded">{member.role}</span>
-                  </div>
-                ))}
-              </div>
-            </InfoSection>
-
-            <div className="col-span-2 md:col-span-1 md:row-span-2">
-              <InfoSection title="Contribution" index={2}>
-                <div className="flex flex-col gap-2 text-slate-900 dark:text-white">
-                  {project.contribution?.map((item, i) => (
-                    <p key={i} className="capitalize">{item}</p>
+              <InfoSection title="The team" index={1}>
+                <div className="flex flex-col gap-2">
+                  {project.team?.map((member, i) => (
+                    <div key={i} className="flex items-center gap-2 text-slate-900 dark:text-white">
+                      <span>{member.name}</span>
+                      <span className="text-[10px] font-bold text-slate-400 dark:text-slate-600 tracking-tight px-1.5 py-0.5 border border-slate-200 dark:border-slate-800 rounded">{member.role}</span>
+                    </div>
                   ))}
                 </div>
               </InfoSection>
+
+              <div className="col-span-2 md:col-span-1 md:row-span-2">
+                <InfoSection title="Contribution" index={2}>
+                  <div className="flex flex-col gap-2 text-slate-900 dark:text-white">
+                    {project.contribution?.map((item, i) => (
+                      <p key={i} className="capitalize">{item}</p>
+                    ))}
+                  </div>
+                </InfoSection>
+              </div>
+
+              <InfoSection title="Duration" index={3}>
+                {project.timeline}
+              </InfoSection>
+
+              <InfoSection title="My role" index={4}>
+                {project.role}
+              </InfoSection>
             </div>
 
-            <InfoSection title="Duration" index={3}>
-              {project.timeline}
-            </InfoSection>
-
-            <InfoSection title="My role" index={4}>
-              {project.role}
-            </InfoSection>
-          </div>
-
-          {/* Right: Operational Controls */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col gap-4 w-full lg:w-[240px] shrink-0"
-          >
-            {/* <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full flex items-center justify-between px-6 py-4 text-sm rounded-xl transition-all duration-300 hover:shadow-lg bg-slate-800 hover:bg-slate-700 text-white font-medium font-sans"
+            {/* Right: Operational Controls */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-col gap-4 w-full lg:w-[240px] shrink-0"
             >
-              Video Explanation
-              <PlayIcon />
-            </motion.button> */}
-            {project.liveLink && (
-              <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="w-full">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full flex items-center justify-between px-6 py-4 text-sm rounded-xl transition-all duration-300 border border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 text-slate-900 dark:text-white font-medium font-sans hover:shadow-md"
-                >
-                  Live Website
-                  <ExternalIcon />
-                </motion.button>
-              </a>
-            )}
-            {project.prototypeLink && (
-              <a href={project.prototypeLink} target="_blank" rel="noopener noreferrer" className="w-full">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full flex items-center justify-between px-6 py-4 text-sm rounded-xl transition-all duration-300 border border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 text-slate-900 dark:text-white font-medium font-sans hover:shadow-md"
-                >
-                  View Prototype
-                  <ExternalIcon />
-                </motion.button>
-              </a>
-            )}
-          </motion.div>
+              {project.liveLink && (
+                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="w-full">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full flex items-center justify-between px-6 py-4 text-sm rounded-xl transition-all duration-300 border border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 text-slate-900 dark:text-white font-medium font-sans hover:shadow-md"
+                  >
+                    Live Website
+                    <ExternalIcon />
+                  </motion.button>
+                </a>
+              )}
+              {project.prototypeLink && (
+                <a href={project.prototypeLink} target="_blank" rel="noopener noreferrer" className="w-full">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full flex items-center justify-between px-6 py-4 text-sm rounded-xl transition-all duration-300 border border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 text-slate-900 dark:text-white font-medium font-sans hover:shadow-md"
+                  >
+                    View Prototype
+                    <ExternalIcon />
+                  </motion.button>
+                </a>
+              )}
+            </motion.div>
+          </div>
         </div>
 
         {/* Visualization Sequence */}
-        <div className="mt-16 md:mt-24 space-y-12 md:space-y-24">
-          {galleryData.map((item, index) => (
-            <ScrollRevealItem key={index}>
-              <div className="flex flex-col gap-5 md:gap-10">
-                <div className="w-full rounded-[24px] overflow-hidden bg-slate-50 dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-white/5 group">
-                  <div className="overflow-hidden">
-                    {item.type === 'video' ? (
-                      <SmartVideo src={item.url} className="w-full h-auto" />
-                    ) : (
-                      <img src={item.url} alt={item.caption} className="w-full h-auto transition-transform duration-1000 group-hover:scale-105" />
+        <div className="mt-32 md:mt-48">
+          <div className="space-y-32 md:space-y-48">
+            {galleryData.map((item, index) => (
+              <ScrollRevealItem key={index}>
+                <div className="flex flex-col gap-8 md:gap-12">
+                  {/* Media Frame */}
+                  <div className="w-full rounded-[24px] overflow-hidden bg-slate-50 dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-white/5 group">
+                    <div className="overflow-hidden">
+                      {item.type === 'video' ? (
+                        <SmartVideo src={item.url} className="w-full h-auto" />
+                      ) : (
+                        <img src={item.url} alt={item.caption} className="w-full h-auto transition-transform duration-1000 group-hover:scale-105" />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Text Content */}
+                  <div className="space-y-3 px-1">
+                    {item.sectionTitle && (
+                      <motion.h4
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="text-[18px] md:text-[24px] font-medium text-slate-900 dark:text-white tracking-light"
+                      >
+                        {item.sectionTitle}
+                      </motion.h4>
+                    )}
+                    {item.caption && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.1 }}
+                        className="w-full text-left"
+                      >
+                        <p
+                          className="text-[14px] md:text-lg text-slate-600 dark:text-slate-400 font-normal font-sans"
+                          style={{ lineHeight: '1.7' }}
+                        >
+                          {formatText(item.caption)}
+                        </p>
+                      </motion.div>
                     )}
                   </div>
                 </div>
-                {item.caption && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="w-full text-left px-1"
-                  >
-                    <p
-                      className="text-base md:text-lg text-slate-700 dark:text-slate-300 font-normal font-sans"
-                      style={{ lineHeight: '1.8' }}
-                    >
-                      {formatText(item.caption)}
-                    </p>
-                  </motion.div>
-                )}
-              </div>
-            </ScrollRevealItem>
-          ))}
-        </div>
-
-      </div>
-
-      {/* Final Progression - Discover More with full-width background */}
-      <div className="mt-48 py-32 bg-slate-50 dark:bg-slate-900/40 border-y border-slate-100 dark:border-white/5">
-        <div className="max-w-[1100px] mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center mb-16 text-center"
-          >
-            <span className="text-xs opacity-40 mb-4 font-medium text-slate-500 dark:text-slate-400 font-sans uppercase">
-              Check other CaseStudies
-            </span>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <NextProjectCard project={prevProject} direction="prev" />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-            >
-              <NextProjectCard project={nextProject} direction="next" />
-            </motion.div>
+              </ScrollRevealItem>
+            ))}
           </div>
         </div>
       </div>
+
+      <div className="h-48 md:h-64" /> {/* Visual Spacer */}
 
       <ContactSection />
       <Footer />

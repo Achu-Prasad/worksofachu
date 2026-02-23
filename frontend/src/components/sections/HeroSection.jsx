@@ -149,14 +149,15 @@ const HeroSection = () => {
                   </Button>
                 </motion.div>
                 <motion.div className="w-full sm:w-auto" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button
-                    onClick={scrollToContact}
-                    variant="outline"
-                    className="w-full flex items-center justify-center gap-2 border-slate-300 bg-white text-slate-700 hover:bg-slate-50 px-6 py-6 text-sm rounded-xl transition-all duration-300"
-                  >
-                    Download CV
-                    <FileText size={16} weight="bold" />
-                  </Button>
+                  <a href={personalInfo.resumeUrl} target="_blank" rel="noopener noreferrer" className="w-full block">
+                    <Button
+                      variant="outline"
+                      className="w-full flex items-center justify-center gap-2 border-slate-300 bg-white text-slate-700 hover:bg-slate-50 px-6 py-6 text-sm rounded-xl transition-all duration-300"
+                    >
+                      Download CV
+                      <FileText size={16} weight="bold" />
+                    </Button>
+                  </a>
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -180,7 +181,13 @@ const HeroSection = () => {
                     exit={{ opacity: 0, y: -20, scale: 0.95 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                     className="bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-lg cursor-pointer group"
-                    onClick={() => navigate(`/project/${currentProject.slug}`)}
+                    onClick={() => {
+                      if (currentProject.framerCaseStudyUrl) {
+                        window.open(currentProject.framerCaseStudyUrl, "_blank", "noopener,noreferrer");
+                      } else {
+                        navigate(`/project/${currentProject.slug}`);
+                      }
+                    }}
                   >
                     {/* Image/Video Frame */}
                     <div className="relative aspect-[16/10] overflow-hidden">
