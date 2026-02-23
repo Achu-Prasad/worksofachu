@@ -200,7 +200,7 @@ const ProjectDetailsV2 = () => {
   const scaleX = useSpring(scrollYProgress, smoothSpringConfig);
 
   const { scrollY } = useScroll();
-  const [showBackButton, setShowBackButton] = React.useState(project.showHero || window.innerWidth >= 1024);
+  const [showBackButton, setShowBackButton] = React.useState(project?.showHero || window.innerWidth >= 1024);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -208,7 +208,7 @@ const ProjectDetailsV2 = () => {
       const diff = current - lastScrollY.current;
       // Show when near top (if hero exists) or when scrolling up
       if (current < 10) {
-        setShowBackButton(project.showHero || window.innerWidth >= 1024);
+        setShowBackButton(project?.showHero || window.innerWidth >= 1024);
       } else if (diff > 5) {
         // Scrolling down - hide
         setShowBackButton(false);
@@ -218,7 +218,7 @@ const ProjectDetailsV2 = () => {
       }
       lastScrollY.current = current;
     });
-  }, [scrollY, project.showHero]);
+  }, [scrollY, project?.showHero]);
 
   if (!project) return <div className="min-h-screen flex items-center justify-center font-sans">Project not found</div>;
 
@@ -370,14 +370,14 @@ const ProjectDetailsV2 = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col gap-4 w-full lg:w-[240px] shrink-0"
           >
-            <motion.button
+            {/* <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full flex items-center justify-between px-6 py-4 text-sm rounded-xl transition-all duration-300 hover:shadow-lg bg-slate-800 hover:bg-slate-700 text-white font-medium font-sans"
             >
               Video Explanation
               <PlayIcon />
-            </motion.button>
+            </motion.button> */}
             {project.liveLink && (
               <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="w-full">
                 <motion.button
@@ -451,8 +451,8 @@ const ProjectDetailsV2 = () => {
             viewport={{ once: true }}
             className="flex flex-col items-center mb-16 text-center"
           >
-            <span className="text-xs tracking-[0.5em] uppercase opacity-40 mb-4 font-bold text-slate-500 dark:text-slate-400 font-sans">
-              Continue Exploring
+            <span className="text-xs opacity-40 mb-4 font-medium text-slate-500 dark:text-slate-400 font-sans uppercase">
+              Check other CaseStudies
             </span>
           </motion.div>
 

@@ -102,7 +102,7 @@ export const projects = [
     tools: ["Figma", "Stich AI", "Perplexity AI"],
     timeline: "4 Weeks",
     liveLink: null,
-    prototypeLink: "https://tinyurl.com/guidlyprototype",
+    prototypeLink: "https://guidlyproto.netlify.app/",
     thumbnail: guidlyPreview,
     heroMedia: {
       type: "image",
