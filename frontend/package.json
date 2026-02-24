@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://achu-prasad.github.io/worksofachu",
+  "homepage": "https://spaceofachu.online",
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@phosphor-icons/react": "^2.1.10",
