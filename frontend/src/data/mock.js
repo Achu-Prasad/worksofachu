@@ -50,7 +50,7 @@ export const workExperience = [
     id: 2,
     role: "UI/UX Design Intern",
     company: "Nexotech",
-    duration: "JAN 2025 — SEP 2025",
+    duration: "AUG 2025 — SEP 2025",
     impact: "Designed an end-to-end online course platform, defining core user flows and key pages. Conducted competitor analysis and UX research to drive design decisions, delivering high-fidelity UI optimized for usability and conversion."
   },
   {
