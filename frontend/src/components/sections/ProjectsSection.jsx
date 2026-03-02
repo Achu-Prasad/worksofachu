@@ -75,26 +75,26 @@ const ProjectCard = ({ project, index }) => {
               </p>
             </div>
             <motion.div
-              className="p-3 rounded-full bg-slate-100 group-hover:bg-slate-900 transition-colors flex-shrink-0"
+              className="p-3 rounded-full bg-[#fcfaf2] group-hover:bg-[#dbeafe] transition-colors flex-shrink-0"
               whileHover={{ rotate: 45 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <ArrowUpRight size={20} className="text-slate-600 group-hover:text-white transition-colors" />
+              <ArrowUpRight size={20} className="text-slate-600 group-hover:text-slate-900 transition-colors" />
             </motion.div>
           </div>
 
           {/* Tags - Simplified without map */}
           <div className="flex flex-wrap gap-2 mt-2">
-            <Badge variant="secondary" className="bg-slate-100 text-slate-600 font-normal">
+            <Badge variant="secondary" className="bg-[#eff6ff] text-slate-600 font-normal border-none">
               {project.tags[0]}
             </Badge>
             {project.tags[1] && (
-              <Badge variant="secondary" className="bg-slate-100 text-slate-600 font-normal">
+              <Badge variant="secondary" className="bg-[#eff6ff] text-slate-600 font-normal border-none">
                 {project.tags[1]}
               </Badge>
             )}
             {project.tags[2] && (
-              <Badge variant="secondary" className="bg-slate-100 text-slate-600 font-normal">
+              <Badge variant="secondary" className="bg-[#eff6ff] text-slate-600 font-normal border-none">
                 {project.tags[2]}
               </Badge>
             )}

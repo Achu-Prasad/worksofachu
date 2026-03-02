@@ -99,7 +99,7 @@ const ExperienceSection = () => {
                   <motion.div
                     animate={{ rotate: expandedId === job.id ? 180 : 0 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="flex-shrink-0 p-1.5 sm:p-2 rounded-full bg-slate-100"
+                    className={`flex-shrink-0 p-1.5 sm:p-2 rounded-full transition-colors duration-300 ${expandedId === job.id ? 'bg-[#dbeafe]' : 'bg-[#fcfaf2]'}`}
                   >
                     <CaretDown size={18} className="text-slate-600 sm:w-5 sm:h-5" />
                   </motion.div>

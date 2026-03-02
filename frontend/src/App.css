@@ -34,10 +34,10 @@
     }
 }
 
-/* Smooth scrolling */
-html {
+/* Smooth scrolling disabled to prevent choppiness with JS scripts */
+/* html {
     scroll-behavior: smooth;
-}
+} */
 
 /* Custom animations */
 @keyframes fade-in {

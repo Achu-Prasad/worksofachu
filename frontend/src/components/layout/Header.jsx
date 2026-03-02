@@ -12,22 +12,24 @@ const Header = () => {
   const scrollThreshold = 10; // Minimum scroll distance to trigger hide/show
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          setIsScrolled(currentScrollY > 20);
 
-      // Update scrolled state for background styling
-      setIsScrolled(currentScrollY > 20);
-
-      // Determine scroll direction with threshold
-      if (Math.abs(currentScrollY - lastScrollY.current) > scrollThreshold) {
-        if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-          // Scrolling down & past threshold - hide navbar
-          setIsVisible(false);
-        } else {
-          // Scrolling up - show navbar
-          setIsVisible(true);
-        }
-        lastScrollY.current = currentScrollY;
+          if (Math.abs(currentScrollY - lastScrollY.current) > scrollThreshold) {
+            if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+              setIsVisible(false);
+            } else {
+              setIsVisible(true);
+            }
+            lastScrollY.current = currentScrollY;
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -70,9 +72,9 @@ const Header = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: isVisible ? 0 : -100 }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled
-        ? 'bg-white/90 backdrop-blur-md shadow-sm'
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-white shadow-sm'
         : 'bg-transparent'
         }`}
     >
